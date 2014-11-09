@@ -32,9 +32,6 @@ set incsearch   " Incremental search
 nnoremap <silent> <CR> :noh<CR><CR>  " Clear search highlight by hitting enter
 
 set number      " Show line numbers
-set foldcolumn=2
-set foldmethod=syntax
-set foldlevelstart=2
 set shiftwidth=4
 set tabstop=4
 set hlsearch    " Highlight search results
@@ -47,10 +44,8 @@ set backspace=indent,eol,start  " make backspace work like everything else
 
 syntax enable
 filetype plugin indent on
-colorscheme solarized
 
 set laststatus=2
-set statusline=[%l,%v\ %P%M]\ %f\ %y%r%w[%{&ff}]%{fugitive#statusline()}\ %b\ 0x%B
 "set t_Co=256
 "call togglebg#map("<F5>")
 
@@ -64,10 +59,6 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 " Run wrapwithtag.vim script when opening html docs (shouldn't this be a
 " filetype plugin? meh.)
 autocmd Filetype html,xml,aspvbs runtime scripts/wrapwithtag.vim
-
-" Use aspvbs filetype for .asa and .asp files so we get syntax highlighting
-let g:filetype_asa = "aspvbs"
-let g:filetype_asp = "aspvbs"
 
 " Use Groovy syntax highlighting for gradle buildfiles
 au BufNewFile,BufRead *.gradle setf groovy
@@ -197,3 +188,12 @@ let g:ctrlp_custom_ignore = {
 " CoffeeScript indentation
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+
+color codeschool
+set guifont=Monaco:h12
+let g:NERDTreeWinPos = "right"
+set guioptions-=T " Removes top toolbar
+set guioptions-=r " Removes right hand scroll bar
+set go-=L " Removes left hand scroll bar
+autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
+:set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
